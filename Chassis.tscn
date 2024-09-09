@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0pjtf4imvgqk"]
+
+[ext_resource type="PackedScene" uid="uid://bbcm2xdspjow2" path="res://cardub.glb" id="1_f7uk8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yuq44"]
+size = Vector3(2.72778, 0.282104, 5.08688)
+
+[node name="Chassis" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102692, -0.114807, 0.0441728)
+shape = SubResource("BoxShape3D_yuq44")
+
+[node name="cardub" parent="RigidBody3D" instance=ExtResource("1_f7uk8")]
+
+[node name="MountPoints" type="Node3D" parent="RigidBody3D/cardub"]
+
+[node name="EngineMount" type="Node3D" parent="RigidBody3D/cardub/MountPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0869927, 0.441141, -3.12062)
+
+[node name="WheelMount_FL" type="Node3D" parent="RigidBody3D/cardub/MountPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40022, -0.154053, -3.39867)
+
+[node name="WheelMount_FR" type="Node3D" parent="RigidBody3D/cardub/MountPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39946, -0.0890408, -3.30576)
+
+[node name="Seat" type="Node3D" parent="RigidBody3D/cardub/MountPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.79404, 0, -0.402981)

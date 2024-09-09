@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6daoxrldgvs"]
+
+[ext_resource type="Script" path="res://KinematicBody.gd" id="1_nn7mq"]
+[ext_resource type="Script" path="res://Camera.gd" id="2_eeq4s"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8yens"]
+height = 1.0
+
+[node name="Player" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+script = ExtResource("1_nn7mq")
+_sections_unfolded = ["Transform"]
+Sensitivity_X = 0.1
+Sensitivity_Y = 0.05
+Invert_Y_Axis = false
+Exit_On_Escape = true
+Maximum_Y_Look = 90
+Accelaration = 5
+Maximum_Walk_Speed = 10
+Jump_Speed = 2
+
+[node name="Camera" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435676, 0)
+fov = 70.0
+far = 100.0
+script = ExtResource("2_eeq4s")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.4, 0, 0.2, -1.74846e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_8yens")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player"]
+root_path = NodePath("../..")
